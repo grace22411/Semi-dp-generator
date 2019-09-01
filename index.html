@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <meta property="og:title" content="Global">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Global">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="assets/style.css">
+	<title>Schulltech | Digital Transformation</title>
+	
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<script src="jquery.js"></script>
+	<script src="html2canvas.min.js"></script>
+	<script src="download.js"></script>
+	
+	<script>
+		$(function() {
+			
+			 $('#img-uploader').click(function(e) {
+        $('#file-upload').click()
+      })
+			 
+			 
+      $('#file-upload').change(function() {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var preview = document.querySelector('.avatar');
+          preview.style.backgroundImage = `url(${e.target.result})`;
+//          preview.style.maxWidth = '350px';
+//          preview.style.maxHeight = '350px';
+        }
+        reader.readAsDataURL(this.files[0]);
+      })
+			 
+			 $('#export').click(function() {
+				 
+        html2canvas(document.querySelector(".main-avatar")).then( function(canvas) {
+			console.log(canvas)
+          download(canvas.toDataURL(), "avatar.png", "image/png")
+        });
+      })
+		})
+	</script>
+</head>
+
+<body>
+    <section class="main-avatar">
+		<div class="sec">
+        	<div class="avatar img-uploader" id="img-uploader">
+        
+      </div>
+        	
+      <div class="avatar-info">
+      <span  contenteditable id="name-holder">
+        <h2  id="edit-name">Add Name</h2>
+      </span>
+	</div>
+		</div>
+    </section>
+
+	<button id="export">Export</button>
+     <div class="">
+    <form class="" enctype="multipart/form-data" method="post">
+      <input type="file" id="file-upload" style="height: 1px;">
+    </form>
+  </div>
+<!--
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    
+<script src="assets/script.js"></script>
+<script src="assets/js/jquery-2.2.4.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+-->
+</body>
+
+</html>
